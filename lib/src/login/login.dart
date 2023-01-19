@@ -21,8 +21,6 @@ class _LoginDemoState extends State<LoginDemo> {
 
   @override
   Widget build(BuildContext context) {
-    var homePage = const HomePage();
-
     var loginPage = Column(
       children: <Widget>[
         Padding(
@@ -34,7 +32,7 @@ class _LoginDemoState extends State<LoginDemo> {
                 /*decoration: BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(50.0)),*/
-                child: Image.asset('assets/images/flutter_logo.png')),
+                child: Image.asset('assets/images/Eurecom.png')),
           ),
         ),
         const Padding(
@@ -73,10 +71,7 @@ class _LoginDemoState extends State<LoginDemo> {
           decoration: BoxDecoration(
               color: Colors.blue, borderRadius: BorderRadius.circular(20)),
           child: TextButton(
-            onPressed: () {
-              homePage;
-              // state = _State.homepage;
-            },
+            onPressed: homePage,
             child: const Text(
               'Login',
               style: TextStyle(color: Colors.white, fontSize: 25),
@@ -86,25 +81,29 @@ class _LoginDemoState extends State<LoginDemo> {
       ],
     );
 
-    Widget body;
+    // Widget body;
 
-    switch (state) {
-      case _State.login:
-        body = loginPage;
-        break;
-      case _State.homepage:
-        body = homePage;
-        break;
-      default:
-        body = homePage;
-        break;
-    }
+    // switch (state) {
+    //   case _State.login:
+    //     body = loginPage;
+    //     break;
+    //   case _State.homepage:
+    //     body = homePage;
+    //     break;
+    //   default:
+    //     body = homePage;
+    //     break;
+    // }
 
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        child: body,
+        child: loginPage,
       ),
     );
+  }
+
+  void homePage() {
+    HomePage();
   }
 }

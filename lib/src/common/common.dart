@@ -1,6 +1,6 @@
 class User {
   String lastName;
-  int firstName;
+  String firstName;
   String email;
   String password;
   String username;
