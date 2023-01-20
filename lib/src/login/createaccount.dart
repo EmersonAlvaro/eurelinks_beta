@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../common/common.dart';
+import '../model/User.dart';
 
 class CreateAccountPage extends StatefulWidget {
   const CreateAccountPage({super.key});
@@ -27,109 +28,118 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
         key: _formKey,
         child: Column(
           children: <Widget>[
-            TextFormField(
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter a Last name';
-                }
-                return null;
-              },
-              onSaved: (value) => _lastName = value!,
-              decoration: const InputDecoration(labelText: 'last name'),
+            Padding(
+              padding: const EdgeInsets.only(top: 5.0),
+              child: const Center(
+                child: SizedBox(),
+              ),
             ),
-            TextFormField(
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter a first name';
-                }
-                return null;
-              },
-              onSaved: (value) => _firstName = value!,
-              decoration: const InputDecoration(labelText: 'first name'),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: TextFormField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter a Last name';
+                  }
+                  return null;
+                },
+                onSaved: (value) => _lastName = value!,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(), labelText: 'last name'),
+              ),
             ),
-            TextFormField(
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter a username';
-                }
-                return null;
-              },
-              onSaved: (value) => _username = value!,
-              decoration: const InputDecoration(labelText: 'Username'),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: TextFormField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter a first name';
+                  }
+                  return null;
+                },
+                onSaved: (value) => _firstName = value!,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(), labelText: 'first name'),
+              ),
             ),
-            TextFormField(
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter an email';
-                }
-                return null;
-              },
-              onSaved: (value) => _email = value!,
-              decoration: const InputDecoration(labelText: 'Email'),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: TextFormField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter a username';
+                  }
+                  return null;
+                },
+                onSaved: (value) => _username = value!,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(), labelText: 'Username'),
+              ),
             ),
-            TextFormField(
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter a password';
-                }
-                return null;
-              },
-              onSaved: (value) => _password = value!,
-              obscureText: true,
-              decoration: const InputDecoration(labelText: 'Password'),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: TextFormField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter an email';
+                  }
+                  return null;
+                },
+                onSaved: (value) => _email = value!,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(), labelText: 'Email'),
+              ),
             ),
-            DropdownButtonFormField(
-              value: _role,
-              onChanged: (String? newValue) {
-                setState(() {
-                  _role = newValue!;
-                });
-              },
-              items: <String>['student', 'professor', 'staff', 'admin']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(
-                    value,
-                    style: TextStyle(fontSize: 20),
-                  ),
-                );
-              }).toList(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: TextFormField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter a password';
+                  }
+                  return null;
+                },
+                onSaved: (value) => _password = value!,
+                obscureText: true,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(), labelText: 'Password'),
+              ),
             ),
-            // DropdownButtonFormField(
-            //   value: _role,
-            //   items: const [
-            //     DropdownMenuItem(
-            //       value: 'professor',
-            //       child: Text('professor'),
-            //     ),
-            //     DropdownMenuItem(
-            //       value: 'student',
-            //       child: Text('student'),
-            //     ),
-            //     DropdownMenuItem(
-            //       value: 'staff',
-            //       child: Text('staff'),
-            //     ),
-            //   ],
-            //   onChanged: (value) {
-            //     setState(() {
-            //       _role = value!;
-            //     });
-            //   },
-            //   decoration: const InputDecoration(
-            //     labelText: 'Select an option',
-            //   ),
-            //   validator: (value) {
-            //     if (value == null) {
-            //       return 'Please select an option';
-            //     }
-            //     return null;
-            //   },
-            // ),
-            ElevatedButton(
-              onPressed: _submit,
-              child: const Text('Create Account'),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: DropdownButtonFormField(
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                ),
+                value: _role,
+                onChanged: (String? newValue) {
+                  setState(() {
+                    _role = newValue!;
+                  });
+                },
+                items: <String>['student', 'professor', 'staff', 'admin']
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(
+                      value,
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                  );
+                }).toList(),
+              ),
+            ),
+            Container(
+              height: 50,
+              width: 250,
+              decoration: BoxDecoration(
+                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+              child: ElevatedButton.icon(
+                icon: const Icon(Icons.login_outlined, size: 18),
+                label: const Text("Create Account",
+                    style: TextStyle(color: Colors.white, fontSize: 25)),
+                onPressed: _submit,
+              ),
             ),
           ],
         ),
@@ -149,5 +159,6 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
           username: _username,
           role: _role);
     }
+    Navigator.pop(context);
   }
 }

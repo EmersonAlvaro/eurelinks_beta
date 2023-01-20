@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'newsItems.dart';
 import '../common/common.dart';
+import 'create_news.dart';
+import '../model/News.dart';
+
+bool _isPressed = true;
 
 final List<News> newsItems = createNewsList();
 
@@ -13,8 +16,21 @@ class FeedNews extends StatelessWidget {
       body: ListView(
         restorationId: "list-news-feed-news",
         // padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
-        children: [for (final news in newsItems) NewsCard(news: news)],
+        children: [
+          for (final news in newsItems) NewsCard(news: news),
+        ],
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        icon: const Icon(Icons.post_add_outlined),
+        label: const Text('post'),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const CreatePostPage()),
+          );
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }
@@ -31,6 +47,15 @@ class NewsCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Row(
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.account_circle_outlined),
+                  onPressed: () {},
+                ),
+                Text(news.author),
+              ],
+            ),
             SizedBox(
               height: 184,
               child: Stack(
@@ -42,18 +67,33 @@ class NewsCard extends StatelessWidget {
                       child: Container(),
                     ),
                   ),
-                  Positioned(
-                    bottom: 16,
-                    left: 16,
-                    right: 16,
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      alignment: Alignment.centerLeft,
-                      child: Text('Author : ${news.author}'),
-                    ),
-                  ),
                 ],
               ),
+            ),
+            Row(
+              children: [
+                IconButton(
+                  // icon: const Icon(Icons.favorite_outline_rounded),
+                  icon: _isPressed
+                      ? const Icon(Icons.favorite)
+                      : const Icon(Icons.favorite_outlined),
+                  onPressed: () {
+                    _isPressed = !_isPressed;
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(Icons.comment_bank_outlined),
+                  onPressed: () {},
+                ),
+                IconButton(
+                  icon: const Icon(Icons.share_sharp),
+                  onPressed: () {},
+                ),
+              ],
+            ),
+            const Divider(
+              color: Colors.black,
+              thickness: 2,
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
@@ -70,10 +110,7 @@ class NewsCard extends StatelessWidget {
                     ),
                     Text('Description:  ${news.description}',
                         maxLines: 10,
-                        style: Theme.of(context)
-                            .primaryTextTheme
-                            .caption!
-                            .copyWith(color: Colors.black),
+                        // style: Theme.of(context).primaryTextTheme.subtitle2!,
                         overflow: TextOverflow.ellipsis),
                   ],
                 ),

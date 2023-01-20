@@ -6,6 +6,9 @@ import '../feed/feed.dart';
 import '../jobs/jobs.dart';
 import '../menu/menu.dart';
 import '../timeline/timeline.dart';
+import '../settings/settings_service.dart';
+import '../settings/settings_controller.dart';
+import '../user_profile/user_profile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,8 +18,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<HomePage> {
-  
   int _selectedIndex = 0;
+  bool _isDark = false;
 
   static const List<Widget> _widgetOptions = <Widget>[
     FeedNews(),
@@ -32,34 +35,56 @@ class _MyStatefulWidgetState extends State<HomePage> {
     });
   }
 
+  void _changeThemeBrightness() {
+    setState(() {
+      _isDark = !_isDark;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('EURELINK'),
+        automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            // tooltip: localization.starterAppTooltipFavorite,
-            icon: const Icon(
-              Icons.account_circle_outlined,
-            ),
-            onPressed: () {},
-          ),
-          IconButton(
-            // tooltip: localization.starterAppTooltipSearch,
             icon: const Icon(
               Icons.search,
             ),
             onPressed: () {},
-          )
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.brightness_6_outlined,
+            ),
+            onPressed: _changeThemeBrightness,
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.account_circle_outlined,
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProflieView()),
+              );
+            },
+          ),
         ],
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        
         backgroundColor: Theme.of(context).colorScheme.onPrimary,
+        elevation: 0,
+        selectedFontSize: 20,
+        iconSize: 35,
+        selectedIconTheme:
+            const IconThemeData(color: Colors.amberAccent, size: 40),
+        selectedItemColor: Colors.amberAccent,
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
 
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -79,12 +104,12 @@ class _MyStatefulWidgetState extends State<HomePage> {
             label: 'Jobs',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.menu),
+            icon: Icon(Icons.menu_sharp),
             label: 'Menu',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        // selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
     );
