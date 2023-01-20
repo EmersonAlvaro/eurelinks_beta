@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../common/common.dart';
 import 'create_news.dart';
 import '../model/News.dart';
+import '../common/dumydata.dart';
 
 bool _isPressed = true;
 

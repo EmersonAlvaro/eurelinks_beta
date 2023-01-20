@@ -6,6 +6,24 @@ import '../model/Job.dart';
 import '../model/Club.dart';
 import '../model/EventCalendar.dart';
 import '../model/EventTimelime.dart';
+import '../model/News.dart';
+
+List<News> createNewsList() {
+  List<News> newsList = [];
+  for (int i = 1; i <= 30; i++) {
+    News news = News(
+        title: "News $i",
+        description:
+            "EURECOM_$i is a French Graduate school and a research center in digital sciences. It is part of the Institut Mines-Télécom and it is a founding member of the SophiaTech Campus in Sophia Antipolis ",
+        author: "Author $i",
+        imageurl:
+            "https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg",
+        date_created: DateTime.now());
+
+    newsList.add(news);
+  }
+  return newsList;
+}
 
 final List<User> users = List.generate(
   30,
@@ -42,7 +60,7 @@ final List<Course> courses = List.generate(
   30,
   (index) => Course(
     name: 'Course ${index + 1}',
-    nameShort: 'C${index + 1}',
+    nameShort: 'Course_Item_${index + 1}',
     description: 'This is a description for course ${index + 1}',
     comments: List.generate(
       10,
@@ -80,7 +98,7 @@ final List<Club> clubs = List.generate(
   30,
   (index) => Club(
     name: 'Club ${index + 1}',
-    nameShort: 'C${index + 1}',
+    nameShort: 'Club_Item_${index + 1}',
     description: 'This is a description for club ${index + 1}',
     presidenteName: 'President ${index + 1}',
   ),

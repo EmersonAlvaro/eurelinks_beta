@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../common/dumydata.dart';
+import 'club_item_details.dart';
 
 class ClubsView extends StatefulWidget {
   const ClubsView({super.key});
@@ -24,7 +25,15 @@ class _ClubsPageState extends State<ClubsView> {
               vertical: 2,
             ),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        SampleClubItemDetailsView(clubItem: clubs[index]),
+                  ),
+                );
+              },
               child: Text(clubs[index].nameShort),
             ),
           );

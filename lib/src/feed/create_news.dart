@@ -79,24 +79,25 @@ class _CreatePostPageState extends State<CreatePostPage> {
                     maxLines: 2,
                   )),
               Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: TextFormField(
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Please enter a description';
-                      }
-                      return null;
-                    },
-                    onSaved: (value) => _description = value!,
-                    // decoration: const InputDecoration(labelText: 'first name'),
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: "Write the post description",
-                      helperText: "Write the post description",
-                      labelText: "Write the post description",
-                    ),
-                    maxLines: 4,
-                  )),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter a description';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) => _description = value!,
+                  // decoration: const InputDecoration(labelText: 'first name'),
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "Write the post description",
+                    helperText: "Write the post description",
+                    labelText: "Write the post description",
+                  ),
+                  maxLines: 4,
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Row(

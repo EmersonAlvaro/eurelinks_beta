@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../model/Course.dart';
 import '../common/dumydata.dart';
+import 'course_item_details.dart';
 
 class CourseView extends StatefulWidget {
   const CourseView({super.key});
@@ -25,7 +26,15 @@ class _CoursePageState extends State<CourseView> {
               vertical: 2,
             ),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        SampleCourseItemDetailsView(courseItem: courses[index]),
+                  ),
+                );
+              },
               child: Text(courses[index].nameShort),
             ),
           );
@@ -34,6 +43,3 @@ class _CoursePageState extends State<CourseView> {
     );
   }
 }
-
-
-

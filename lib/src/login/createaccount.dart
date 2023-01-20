@@ -28,9 +28,9 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
         key: _formKey,
         child: Column(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 5.0),
-              child: const Center(
+            const Padding(
+              padding: EdgeInsets.only(top: 5.0),
+              child: Center(
                 child: SizedBox(),
               ),
             ),

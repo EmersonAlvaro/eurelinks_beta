@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import '../course/course.dart';
+import '../clubs/clubs.dart';
+import '../bde/bde.dart';
+import '../bds/bds.dart';
 
 class MenuView extends StatefulWidget {
   const MenuView({super.key});
@@ -9,13 +12,23 @@ class MenuView extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuView> {
-  final List<String> _buttonLabels = ['Courses', 'Clubs', 'BDE', 'BDS'];
+  final List<String> _buttonLabels = [
+    'Courses',
+    'Clubs',
+    'BDE',
+    'BDS'
+    // ,
+    // 'Lab Parterner',
+    // 'CarPooling',
+    // 'Offices Info',
+    // 'General Info'
+  ];
 
   final List<Widget> _functions = [
     const CourseView(),
-    const CourseView(),
-    const CourseView(),
-    const CourseView()
+    const ClubsView(),
+    const BDEView(),
+    const BDSView()
   ];
 
   @override
