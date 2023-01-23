@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../common/common.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'createaccount.dart';
 import 'forgotpassword.dart';
 
@@ -13,7 +13,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  late String _username;
+  late String _email;
   late String _password;
 
   @override
@@ -29,46 +29,50 @@ class _LoginPageState extends State<LoginPage> {
                 child: SizedBox(
                     width: 200,
                     height: 150,
-                    /*decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(50.0)),*/
                     child: Image.asset('assets/images/Eurecom.png')),
               ),
             ),
+            const SizedBox(height: 16.0),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  hintText: 'Enter your email lastname@eurecom.fr',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  prefixIcon: const Icon(Icons.email_outlined),
+                ),
+                onSaved: (value) => _email = value!,
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'Please enter a username';
+                    return 'Please enter a company';
                   }
                   return null;
                 },
-                onSaved: (value) => _username = value!,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Username',
-                    hintText: 'Enter your username'),
               ),
             ),
+            const SizedBox(height: 16.0),
             Padding(
-              padding: const EdgeInsets.only(
-                  left: 15.0, right: 15.0, top: 15, bottom: 0),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  hintText: 'Enter secure password',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  prefixIcon: const Icon(Icons.password_outlined),
+                ),
+                onSaved: (value) => _password = value!,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Please enter a password';
                   }
                   return null;
                 },
-                onSaved: (value) => _password = value!,
-                obscureText: true,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Password',
-                    hintText: 'Enter secure password'),
               ),
             ),
+            const SizedBox(height: 16.0),
             TextButton(
               onPressed: () {
                 Navigator.push(
@@ -83,6 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                 style: TextStyle(color: Colors.blue, fontSize: 15),
               ),
             ),
+            const SizedBox(height: 16.0),
             Container(
               height: 50,
               width: 250,
@@ -94,13 +99,6 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(color: Colors.white, fontSize: 25)),
                 onPressed: _submit,
               ),
-              //   TextButton(
-              //     onPressed: _submit,
-              //     child: const Text(
-              //       'Login',
-              //       style: TextStyle(color: Colors.white, fontSize: 25),
-              //     ),
-              //   ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 60.0),
@@ -124,13 +122,34 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _submit() {
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      // Use the data from the form fields to create a new account
-      // Verify credentials
-      // Update the isLoged flag to true
-    }
+  void _submit() async {
+    // if (_formKey.currentState!.validate()) {
+    //   _formKey.currentState!.save();
+    //   // Use the data from the form fields to create a new account
+    //   // Verify credentials
+    //   // Update the isLoged flag to true
+    //   // signInWithEmailAndPassword(_email, _password);
+
+    //   try {
+    //     final credential = await FirebaseAuth.instance
+    //         .signInWithEmailAndPassword(email: _email, password: _password);
+    //   } on FirebaseAuthException catch (e) {
+    //     if (e.code == 'user-not-found') {
+    //       ScaffoldMessenger.of(context).showSnackBar(
+    //         const SnackBar(content: Text('No user found for that email.')),
+    //       );
+    //     } else if (e.code == 'wrong-password') {
+    //       ScaffoldMessenger.of(context).showSnackBar(
+    //         const SnackBar(
+    //             content: Text('Wrong password provided for that user')),
+    //       );
+    //     }
+    //   }
+
+    //   if (FirebaseAuth.instance.currentUser != null) {
+    //     Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
+    //   }
+    // }
     Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
   }
 }

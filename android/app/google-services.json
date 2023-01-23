@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1022748842502",
+    "project_id": "eurelink",
+    "storage_bucket": "eurelink.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1022748842502:android:7bed2fb519a99cd8384187",
+        "android_client_info": {
+          "package_name": "com.example.eurelinks_beta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1022748842502-d3dqqk1mtigah0s58jeck63ti96v4qps.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2RvXnN6vnOk_LVfklSh6HSwV878U-kUY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1022748842502-d3dqqk1mtigah0s58jeck63ti96v4qps.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

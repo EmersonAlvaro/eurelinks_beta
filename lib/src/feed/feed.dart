@@ -3,6 +3,7 @@ import '../common/common.dart';
 import 'create_news.dart';
 import '../model/News.dart';
 import '../common/dumydata.dart';
+import 'package:intl/intl.dart';
 
 bool _isPressed = true;
 
@@ -43,7 +44,13 @@ class NewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.black12),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      margin: EdgeInsets.all(8),
+      child: Padding(
         padding: const EdgeInsets.only(top: 15, left: 4, right: 4),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,28 +103,53 @@ class NewsCard extends StatelessWidget {
               color: Colors.black,
               thickness: 2,
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-              child: DefaultTextStyle(
-                softWrap: false,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.subtitle1!,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Titule: ${news.title}',
-                      style: const TextStyle(fontSize: 20),
-                    ),
-                    Text('Description:  ${news.description}',
-                        maxLines: 10,
-                        // style: Theme.of(context).primaryTextTheme.subtitle2!,
-                        overflow: TextOverflow.ellipsis),
-                  ],
-                ),
-              ),
+            // Padding(
+            //   padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+            //   child: DefaultTextStyle(
+            //     softWrap: false,
+            //     overflow: TextOverflow.ellipsis,
+            //     style: Theme.of(context).textTheme.subtitle1!,
+            //     child: Column(
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         Text(
+            //           'Titule: ${news.title}',
+            //           // style: const TextStyle(fontSize: 20),
+            //           style: Theme.of(context).textTheme.headline6,
+            //         ),
+            //         SizedBox(height: 8.0),
+            //         Text(
+            //           'Description:  ${news.description}',
+            //           maxLines: 10,
+            //           style: Theme.of(context).textTheme.bodyText2,
+            //           // style: Theme.of(context).primaryTextTheme.subtitle2!,
+            //           // overflow: TextOverflow.ellipsis,
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+            Text(
+              'Titule: ${news.title}',
+              // style: const TextStyle(fontSize: 20),
+              style: Theme.of(context).textTheme.headline6,
+            ),
+            SizedBox(height: 8.0),
+            Text(
+              'Description:  ${news.description}',
+              maxLines: 10,
+              style: Theme.of(context).textTheme.bodyText2,
+              // style: Theme.of(context).primaryTextTheme.subtitle2!,
+              // overflow: TextOverflow.ellipsis,
+            ),
+            SizedBox(height: 8.0),
+            Text(
+              "Post Date: ${DateFormat.yMMMd().format(news.dateCreated)}",
+              style: Theme.of(context).textTheme.caption,
             ),
           ],
-        ));
+        ),
+      ),
+    );
   }
 }

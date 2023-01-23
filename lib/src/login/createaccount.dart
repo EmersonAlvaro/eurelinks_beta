@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../common/common.dart';
 import '../model/User.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class CreateAccountPage extends StatefulWidget {
   const CreateAccountPage({super.key});
@@ -151,14 +152,20 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       // Use the data from the form fields to create a new account
-      User user = User(
-          email: _email,
-          password: _password,
-          firstName: _firstName,
-          lastName: _lastName,
-          username: _username,
-          role: _role);
+      // User user = User(
+      //     email: _email,
+      //     password: _password,
+      //     firstName: _firstName,
+      //     lastName: _lastName,
+      //     username: _username,
+      //     role: _role);
+
+      registerWithEmailAndPassword(_email, _password);
+
+      // Navigator.pop(context);
+      if (FirebaseAuth.instance.currentUser != null) {
+        Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
+      }
     }
-    Navigator.pop(context);
   }
 }

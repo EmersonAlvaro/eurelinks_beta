@@ -6,15 +6,13 @@ import 'homepage/homepage.dart';
 import 'login/login.dart';
 import 'theme/theme.dart';
 import 'settings/settings_controller.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class MyApp extends StatelessWidget {
-  MyApp(
-      {super.key,
-      required this.initialRoute});
+  MyApp({super.key, required this.initialRoute});
 
   static const String _title = 'EURELINK';
   final String initialRoute;
-
 
   final settings = ValueNotifier(ThemeSettings(
     sourceColor: const Color(0xff00cbe6), // Replace this color
@@ -35,18 +33,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-Future<bool> checkIfLoggedIn() async {
-  // replace with actual logic to check if the user is logged in
-  bool isLoggedIn = await checkAuthStatus();
-  return isLoggedIn;
-}
-
-Future<bool> checkAuthStatus() async {
-  // replace with code that checks if the user is logged in
-  // for example, checking if the user's token is still valid
-  // or if the user has a valid session on the server
-  bool isLoggedIn = false;
-  // for now, let's assume that the user is logged in
-  isLoggedIn = false;
-  return isLoggedIn;
-}

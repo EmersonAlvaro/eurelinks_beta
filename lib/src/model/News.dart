@@ -3,14 +3,14 @@ class News {
   String description;
   String author;
   String imageurl;
-  DateTime date_created;
+  DateTime dateCreated;
 
   News(
       {required this.title,
       required this.description,
       required this.author,
       required this.imageurl, 
-      required this.date_created});
+      required this.dateCreated});
 
   factory News.fromJson(Map<String, dynamic> json) {
     return News(
@@ -18,7 +18,7 @@ class News {
       description: json['description'],
       author: json['author'],
       imageurl: json['imageurl'],
-      date_created: json['date_created'],
+      dateCreated: json['date_created'],
     );
   }
 }

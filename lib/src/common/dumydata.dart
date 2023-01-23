@@ -7,6 +7,7 @@ import '../model/Club.dart';
 import '../model/EventCalendar.dart';
 import '../model/EventTimelime.dart';
 import '../model/News.dart';
+import '../model/Event.dart';
 
 List<News> createNewsList() {
   List<News> newsList = [];
@@ -18,7 +19,7 @@ List<News> createNewsList() {
         author: "Author $i",
         imageurl:
             "https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg",
-        date_created: DateTime.now());
+        dateCreated: DateTime.now());
 
     newsList.add(news);
   }
@@ -121,5 +122,14 @@ final List<EventTimeline> timelineEvents = List.generate(
     description: 'This is a description for event ${index + 1}',
     date: DateTime.now(),
     mediaResoureURL: 'https://event${index + 1}.com',
+  ),
+);
+
+final List<Event> events = List.generate(
+  30,
+  (index) => Event(
+    name: 'Event ${index + 1}',
+    description: 'Description ${index + 1}',
+    date: DateTime.now(),
   ),
 );

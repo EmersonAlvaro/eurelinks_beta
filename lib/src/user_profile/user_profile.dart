@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../common/common.dart';
+import '../login/login.dart';
 
 class ProflieView extends StatefulWidget {
   const ProflieView({super.key});
@@ -24,8 +26,8 @@ class _ProfilePageState extends State<ProflieView> {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 60.0),
+          const Padding(
+            padding: EdgeInsets.only(top: 60.0),
             child: Center(
               child: SizedBox(
                 width: 200,
@@ -50,6 +52,10 @@ class _ProfilePageState extends State<ProflieView> {
   }
 
   void _submit() {
-    Navigator.pop(context);
+    signOut();
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const LoginPage()),
+    );
   }
 }
