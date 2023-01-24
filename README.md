@@ -26,15 +26,15 @@ Calendar Manager
 
 ### Missing TO DO on Mob Serv Challenge Project
 
-o	Upload pictures
-o	Take Picture with a camera (on create new post) 
-o	Shared preferences to store some key elements (Ideia already in the code)
-o	Forgot Password – UI implemented missing only the logic behind to reset your password.
-o	Theme the APP if needed. 
-o	Make sure all the data is being persisted on Firebase (code already implemented but may need some adjust) 
-o	Make some button only visible to admin
-o	Remove admin from the role on create account. 
-o	User page need some touch
-o	BDE?BDS page need some love
-o	Add and delete events. (add already stated) 
-o	Add visibility  widgets to hide some buttom from admin
+1. Upload pictures
+2. Take Picture with a camera (on create new post) 
+3. Shared preferences to store some key elements (Ideia already in the code)
+4. Forgot Password – UI implemented missing only the logic behind to reset your password.
+5. Theme the APP if needed. 
+6. Make sure all the data is being persisted on Firebase (code already implemented but may need some adjust) 
+7. Make some button only visible to admin
+8. Remove admin from the role on create account. 
+9. User page need some touch
+10. BDE?BDS page need some love
+11. Add and delete events. (add already stated) 
+12. Add visibility  widgets to hide some buttom from admin
