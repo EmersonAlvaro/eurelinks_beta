@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../bds/edit-bde-bds-view.dart';
 
 class BDEView extends StatefulWidget {
   const BDEView({super.key});
@@ -21,6 +22,16 @@ class _BDEPageState extends State<BDEView> {
             onPressed: _submit,
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        icon: const Icon(Icons.post_add_outlined),
+        label: const Text('edit'),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const EditBDESInfo()),
+          );
+        },
       ),
       body: Column(
         children: [

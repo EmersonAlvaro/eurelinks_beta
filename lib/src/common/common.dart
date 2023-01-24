@@ -1,5 +1,5 @@
 import '../model/Calendar.dart';
-// import '../model/User.dart';
+import '../model/User.dart';
 import '../model/News.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,13 +7,10 @@ import 'package:firebase_database/firebase_database.dart';
 
 FirebaseDatabase _database = FirebaseDatabase.instance;
 
-// import 'package:cloud_firestore/cloud_firestore.dart';
-
-// FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
 Future<void> addNews(News news) async {
-  var newsReference = _database.ref().child("news").push();
-  newsReference.set(news);
+  // var newsReference = _database.ref().child("news").push();
+  // newsReference.set(news);
+  _database.ref().child("news").child("12131").set(news);
 }
 
 // sign in with email and password
@@ -71,3 +68,32 @@ Future<bool> checkAuthStatus() async {
     return false;
   }
 }
+
+// TODO the following method should be
+
+Future<UserDetails> getCurrentUserDetails() async {
+  late UserDetails userDetails;
+  if (FirebaseAuth.instance.currentUser != null) {
+    var uid = FirebaseAuth.instance.currentUser!.uid;
+
+    final snapshot = await _database.ref().child("users").child(uid).get();
+    if (snapshot.exists) {
+      var data = snapshot.value as Map<String, dynamic>;
+      userDetails = UserDetails.fromJson(data);
+      print(data);
+    } else {
+      print('No data available.');
+    }
+  }
+  return userDetails;
+}
+
+// Future<bool> isUserAdmin() async {
+//   UserDetails userDetails = await getCurrentUserDetails();
+
+//   if (userDetails.role == "admin") {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }

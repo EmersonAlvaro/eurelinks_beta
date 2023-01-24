@@ -4,8 +4,16 @@ import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
 
-import 'firebase_options.dart';
-
+/// Default [FirebaseOptions] for use with your Firebase apps.
+///
+/// Example:
+/// ```dart
+/// import 'firebase_options.dart';
+/// // ...
+/// await Firebase.initializeApp(
+///   options: DefaultFirebaseOptions.currentPlatform,
+/// );
+/// ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
@@ -41,6 +49,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1022748842502',
     projectId: 'eurelink',
     authDomain: 'eurelink.firebaseapp.com',
+    databaseURL: 'https://eurelink-default-rtdb.firebaseio.com',
     storageBucket: 'eurelink.appspot.com',
     measurementId: 'G-5Y5985CXVG',
   );
@@ -50,6 +59,7 @@ class DefaultFirebaseOptions {
     appId: '1:1022748842502:android:7bed2fb519a99cd8384187',
     messagingSenderId: '1022748842502',
     projectId: 'eurelink',
+    databaseURL: 'https://eurelink-default-rtdb.firebaseio.com',
     storageBucket: 'eurelink.appspot.com',
   );
 
@@ -58,9 +68,9 @@ class DefaultFirebaseOptions {
     appId: '1:1022748842502:ios:10445d99727782eb384187',
     messagingSenderId: '1022748842502',
     projectId: 'eurelink',
+    databaseURL: 'https://eurelink-default-rtdb.firebaseio.com',
     storageBucket: 'eurelink.appspot.com',
-    iosClientId:
-        '1022748842502-bgq9eujgagekuvcm6lund22q79njfs4a.apps.googleusercontent.com',
+    iosClientId: '1022748842502-bgq9eujgagekuvcm6lund22q79njfs4a.apps.googleusercontent.com',
     iosBundleId: 'com.example.eurelinksBeta',
   );
 
@@ -69,9 +79,9 @@ class DefaultFirebaseOptions {
     appId: '1:1022748842502:ios:10445d99727782eb384187',
     messagingSenderId: '1022748842502',
     projectId: 'eurelink',
+    databaseURL: 'https://eurelink-default-rtdb.firebaseio.com',
     storageBucket: 'eurelink.appspot.com',
-    iosClientId:
-        '1022748842502-bgq9eujgagekuvcm6lund22q79njfs4a.apps.googleusercontent.com',
+    iosClientId: '1022748842502-bgq9eujgagekuvcm6lund22q79njfs4a.apps.googleusercontent.com',
     iosBundleId: 'com.example.eurelinksBeta',
   );
 }

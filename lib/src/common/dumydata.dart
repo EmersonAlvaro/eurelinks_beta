@@ -26,15 +26,15 @@ List<News> createNewsList() {
   return newsList;
 }
 
-final List<User> users = List.generate(
+final List<UserDetails> users = List.generate(
   30,
-  (index) => User(
+  (index) => UserDetails(
     lastName: 'LastName ${index + 1}',
     firstName: 'FirstName ${index + 1}',
     email: 'user${index + 1}@email.com',
-    username: 'user${index + 1}',
+    // username: 'user${index + 1}',
     role: 'user',
-    password: 'password${index + 1}',
+    // password: 'password${index + 1}',
   ),
 );
 

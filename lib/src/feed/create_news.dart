@@ -4,6 +4,7 @@ import '../model/News.dart';
 
 import 'package:intl/intl.dart';
 import 'package:firebase_database/firebase_database.dart';
+// import 'package:camera/camera.dart';
 
 String formatDateTime(DateTime dateTime) {
   return DateFormat('MMM d, HH:mm').format(dateTime);
@@ -115,7 +116,8 @@ class _CreatePostPageState extends State<CreatePostPage> {
                     TextButton.icon(
                       icon: const Icon(Icons.add_a_photo_outlined, size: 18),
                       label: const Text("Camera"),
-                      onPressed: _takePicture,
+                      onPressed: () {},
+                      // _takePicture,
                     ),
                     TextButton.icon(
                       icon: const Icon(Icons.photo_library_outlined, size: 18),
@@ -132,7 +134,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
     );
   }
 
-  void _submit() {
+  void _submit() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       // Use the data from the form fields to create a new account
@@ -142,16 +144,25 @@ class _CreatePostPageState extends State<CreatePostPage> {
           title: _title,
           imageurl: "",
           dateCreated: DateTime.now());
-      // addNews(news);
+      // await addNews(JSON.stringify(news));
 
-      var newsReference = _database.ref().child("news").push();
-      newsReference.set(news);
+      // var newsReference =
+      await _database.ref().child("news").set({
+        "title": _title,
+        "description": _description,
+        "author": "_author",
+        "imageurl": "",
+        "dateCreated": DateTime.now()
+      });
 
       Navigator.pop(context);
     }
   }
 
-  void _takePicture() {}
+  void _takePicture() {
+    // final _cameras = await availableCameras();
+    // final firstCamera = _cameras.first;
+  }
 
   void _uploadPicture() {}
 }

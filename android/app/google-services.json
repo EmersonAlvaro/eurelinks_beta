@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1022748842502",
+    "firebase_url": "https://eurelink-default-rtdb.firebaseio.com",
     "project_id": "eurelink",
     "storage_bucket": "eurelink.appspot.com"
   },
@@ -29,6 +30,13 @@
             {
               "client_id": "1022748842502-d3dqqk1mtigah0s58jeck63ti96v4qps.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1022748842502-bgq9eujgagekuvcm6lund22q79njfs4a.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.eurelinksBeta"
+              }
             }
           ]
         }

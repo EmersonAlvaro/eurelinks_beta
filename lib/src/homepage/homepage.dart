@@ -23,7 +23,7 @@ class _MyStatefulWidgetState extends State<HomePage> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     FeedNews(),
-    CalendarView(),
+    CalendarViewPage(),
     TimelineView(),
     JobsView(),
     MenuView(),
@@ -96,7 +96,7 @@ class _MyStatefulWidgetState extends State<HomePage> {
             label: 'Calendar',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.timeline_outlined),
+            icon: Icon(Icons.view_timeline_outlined),
             label: 'TimeLine',
           ),
           BottomNavigationBarItem(

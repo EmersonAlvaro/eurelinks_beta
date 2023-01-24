@@ -1,19 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'package:table_calendar/table_calendar.dart';
-import 'package:intl/intl.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'create-event-calendar.dart';
 
-class CalendarView extends StatefulWidget {
-  const CalendarView({super.key});
+class CalendarViewPage extends StatefulWidget {
+  const CalendarViewPage({super.key});
 
   @override
-  State<CalendarView> createState() => _CreateCalendarPageState();
+  State<CalendarViewPage> createState() => _CreateCalendarPageState();
 }
 
-class _CreateCalendarPageState extends State<CalendarView> {
+class _CreateCalendarPageState extends State<CalendarViewPage> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+        icon: const Icon(Icons.post_add_outlined),
+        label: const Text('add'),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const CreateEventCalendar()),
+          );
+        },
+      ),
+      body: SfCalendar(
+        view: CalendarView.month,
+        monthViewSettings: MonthViewSettings(showAgenda: true),
+      ),
+    );
   }
 }

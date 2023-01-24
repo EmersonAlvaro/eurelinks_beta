@@ -32,9 +32,12 @@ class _EvaluationPageState extends State<EvaluationPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               child: DropdownButtonFormField(
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Course Organization Score'),
+                decoration: InputDecoration(
+                  labelText: 'Course Organization Score',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  prefixIcon: const Icon(Icons.assessment),
+                ),
                 items: _scores.map((score) {
                   return DropdownMenuItem(
                     value: score,
@@ -47,9 +50,12 @@ class _EvaluationPageState extends State<EvaluationPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               child: DropdownButtonFormField(
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Course Content Score'),
+                decoration: InputDecoration(
+                  labelText: 'Course Content Score',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  prefixIcon: const Icon(Icons.assessment),
+                ),
                 items: _scores.map((score) {
                   return DropdownMenuItem(
                     value: score,
@@ -62,9 +68,12 @@ class _EvaluationPageState extends State<EvaluationPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               child: DropdownButtonFormField(
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Course Teaching Score'),
+                decoration: InputDecoration(
+                  labelText: 'Course Teaching Score',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  prefixIcon: const Icon(Icons.assessment),
+                ),
                 items: _scores.map((score) {
                   return DropdownMenuItem(
                     value: score,
@@ -77,9 +86,12 @@ class _EvaluationPageState extends State<EvaluationPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               child: DropdownButtonFormField(
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Course General Score'),
+                decoration: InputDecoration(
+                  labelText: 'Course General Score',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  prefixIcon: const Icon(Icons.assessment),
+                ),
                 items: _scores.map((score) {
                   return DropdownMenuItem(
                     value: score,
@@ -100,8 +112,11 @@ class _EvaluationPageState extends State<EvaluationPage> {
                 },
                 onSaved: (value) => _comment = value!,
                 // decoration: const InputDecoration(labelText: 'first name'),
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  prefixIcon: const Icon(Icons.comment),
                   hintText: "Write your comment here",
                   helperText: "Write your comment here",
                   labelText: "Write your comment here",

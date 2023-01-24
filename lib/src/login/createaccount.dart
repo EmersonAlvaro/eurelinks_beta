@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import '../common/common.dart';
-import '../model/User.dart';
+// import '../common/common.dart';
+// import '../model/User.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
+
+FirebaseDatabase _database = FirebaseDatabase.instance;
 
 class CreateAccountPage extends StatefulWidget {
   const CreateAccountPage({super.key});
@@ -45,8 +48,11 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   return null;
                 },
                 onSaved: (value) => _lastName = value!,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(), labelText: 'last name'),
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    prefixIcon: Icon(Icons.person),
+                    labelText: 'last name'),
               ),
             ),
             Padding(
@@ -59,8 +65,11 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   return null;
                 },
                 onSaved: (value) => _firstName = value!,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(), labelText: 'first name'),
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    prefixIcon: Icon(Icons.person),
+                    labelText: 'first name'),
               ),
             ),
             Padding(
@@ -73,8 +82,12 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   return null;
                 },
                 onSaved: (value) => _username = value!,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(), labelText: 'Username'),
+                decoration: InputDecoration(
+                  labelText: 'Username',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  prefixIcon: Icon(Icons.person),
+                ),
               ),
             ),
             Padding(
@@ -87,8 +100,12 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   return null;
                 },
                 onSaved: (value) => _email = value!,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(), labelText: 'Email'),
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  prefixIcon: Icon(Icons.email),
+                ),
               ),
             ),
             Padding(
@@ -102,15 +119,22 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                 },
                 onSaved: (value) => _password = value!,
                 obscureText: true,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(), labelText: 'Password'),
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  prefixIcon: Icon(Icons.password),
+                ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               child: DropdownButtonFormField(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
+                decoration: InputDecoration(
+                  labelText: 'Role',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  prefixIcon: Icon(Icons.title),
                 ),
                 value: _role,
                 onChanged: (String? newValue) {
@@ -148,7 +172,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
     );
   }
 
-  void _submit() {
+  void _submit() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       // Use the data from the form fields to create a new account
@@ -158,9 +182,42 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
       //     firstName: _firstName,
       //     lastName: _lastName,
       //     username: _username,
-      //     role: _role);
+      //     role: _role);  
 
-      registerWithEmailAndPassword(_email, _password);
+      try {
+        final credential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _email,
+          password: _password,
+        );
+        
+        // final user = credential.user;
+        _database
+            .ref()
+            .child("users")
+            .child(credential.user!.uid)
+            .set({
+          "email": _email,
+          "lastName": _lastName,
+          "firstName": _firstName,
+          "role": _role,
+        });
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          // print('The password provided is too weak.');
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('The password provided is too weak.')),
+          );
+        } else if (e.code == 'email-already-in-use') {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+                content: Text('The account already exists for that email')),
+          );
+          // print('The account already exists for that email.');
+        }
+      } catch (e) {
+        print(e);
+      }
 
       // Navigator.pop(context);
       if (FirebaseAuth.instance.currentUser != null) {

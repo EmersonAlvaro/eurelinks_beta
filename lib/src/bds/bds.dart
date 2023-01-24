@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'edit-bde-bds-view.dart';
 
 class BDSView extends StatefulWidget {
   const BDSView({super.key});
@@ -22,6 +23,16 @@ class _BDSPageState extends State<BDSView> {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        icon: const Icon(Icons.post_add_outlined),
+        label: const Text('edit'),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const EditBDESInfo()),
+          );
+        },
+      ),
       body: Column(
         children: [
           Padding(
@@ -30,10 +41,7 @@ class _BDSPageState extends State<BDSView> {
               child: SizedBox(
                 width: 200,
                 height: 150,
-                child: Icon(
-                  Icons.person,
-                ),
-                // Image.asset('assets/images/Eurecom.png'),
+                child: Image.asset('assets/images/eurelink-logo.jpg'),
               ),
             ),
           ),
