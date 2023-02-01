@@ -38,3 +38,7 @@ Calendar Manager
 10. BDE?BDS page need some love
 11. Add and delete events. (add already stated) 
 12. Add visibility  widgets to hide some buttom from admin
+
+
+## Pick picture from Gallery and Upload Image to firebase
+https://www.educative.io/answers/how-to-upload-to-firebase-storage-with-flutter
