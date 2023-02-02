@@ -26,4 +26,3 @@ class Course {
         "evaluations": []
       };
 }
-
