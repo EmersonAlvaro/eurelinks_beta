@@ -123,33 +123,33 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _submit() async {
-    // if (_formKey.currentState!.validate()) {
-    //   _formKey.currentState!.save();
-    //   // Use the data from the form fields to create a new account
-    //   // Verify credentials
-    //   // Update the isLoged flag to true
-    //   // signInWithEmailAndPassword(_email, _password);
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      // Use the data from the form fields to create a new account
+      // Verify credentials
+      // Update the isLoged flag to true
+      // signInWithEmailAndPassword(_email, _password);
 
-    //   try {
-    //     final credential = await FirebaseAuth.instance
-    //         .signInWithEmailAndPassword(email: _email, password: _password);
-    //   } on FirebaseAuthException catch (e) {
-    //     if (e.code == 'user-not-found') {
-    //       ScaffoldMessenger.of(context).showSnackBar(
-    //         const SnackBar(content: Text('No user found for that email.')),
-    //       );
-    //     } else if (e.code == 'wrong-password') {
-    //       ScaffoldMessenger.of(context).showSnackBar(
-    //         const SnackBar(
-    //             content: Text('Wrong password provided for that user')),
-    //       );
-    //     }
-    //   }
+      try {
+        final credential = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: _email, password: _password);
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'user-not-found') {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('No user found for that email.')),
+          );
+        } else if (e.code == 'wrong-password') {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+                content: Text('Wrong password provided for that user')),
+          );
+        }
+      }
 
-    //   if (FirebaseAuth.instance.currentUser != null) {
-    //     Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
-    //   }
-    // }
-    Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
+      if (FirebaseAuth.instance.currentUser != null) {
+        Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
+      }
+    }
+    // Navigator.pushNamedAndRemoveUntil(context, '/home', (_) => false);
   }
 }

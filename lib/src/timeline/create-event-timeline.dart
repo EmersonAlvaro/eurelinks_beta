@@ -63,7 +63,7 @@ class _CreateEventTimelineState extends State<CreateEventTimeline> {
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'Please enter a description of the job';
+                      return 'Please enter a description ';
                     }
                     return null;
                   },

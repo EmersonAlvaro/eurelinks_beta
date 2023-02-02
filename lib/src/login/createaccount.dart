@@ -1,3 +1,4 @@
+import 'package:eurelinks_beta/src/model/User.dart';
 import 'package:flutter/material.dart';
 // import '../common/common.dart';
 // import '../model/User.dart';
@@ -176,13 +177,11 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       // Use the data from the form fields to create a new account
-      // User user = User(
-      //     email: _email,
-      //     password: _password,
-      //     firstName: _firstName,
-      //     lastName: _lastName,
-      //     username: _username,
-      //     role: _role);  
+      UserDetails _userDetails = UserDetails(
+          email: _email,
+          firstName: _firstName,
+          lastName: _lastName,
+          role: _role);  
 
       try {
         final credential =
@@ -196,12 +195,8 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
             .ref()
             .child("users")
             .child(credential.user!.uid)
-            .set({
-          "email": _email,
-          "lastName": _lastName,
-          "firstName": _firstName,
-          "role": _role,
-        });
+            .set({ _userDetails.toJson()});
+            
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
           // print('The password provided is too weak.');

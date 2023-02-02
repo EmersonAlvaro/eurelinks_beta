@@ -67,7 +67,7 @@ class _MyStatefulWidgetState extends State<HomePage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const ProflieView()),
+                MaterialPageRoute(builder: (context) => ProflieView()),
               );
             },
           ),

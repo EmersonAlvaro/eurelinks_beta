@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import '../model/Job.dart';
+import 'package:firebase_database/firebase_database.dart';
+
+FirebaseDatabase _database = FirebaseDatabase.instance;
 
 class CreateJobPage extends StatefulWidget {
   const CreateJobPage({super.key});
@@ -14,7 +18,7 @@ class _CreateJobPageState extends State<CreateJobPage> {
   late String _location;
   late String _description;
   late String _urlpost;
-  late DateTime _postedDate;
+  // late DateTime _postedDate;
 
   @override
   Widget build(BuildContext context) {
@@ -123,8 +127,16 @@ class _CreateJobPageState extends State<CreateJobPage> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       // Use the data from the form fields to create a new account
+      Job _job = Job(
+          title: _title,
+          company: _company,
+          location: _location,
+          description: _description,
+          urlpost: _urlpost,
+          postedDate: DateTime.now());
 
+      _database.ref().child("jobs").push().set(_job.toJson());
+      Navigator.pop(context);
     }
-    Navigator.pop(context);
   }
 }

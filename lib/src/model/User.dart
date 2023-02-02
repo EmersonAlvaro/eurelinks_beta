@@ -18,12 +18,10 @@ class UserDetails {
         role: json['role']);
   }
 
-  Map<String, dynamic> toJSON() => {
+  Map<String, dynamic> toJson() => {
         'email': email,
         'first_name': firstName,
         'last_name': lastName,
         'role': role,
       };
 }
-
-

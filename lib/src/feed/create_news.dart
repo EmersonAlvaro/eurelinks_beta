@@ -4,6 +4,10 @@ import '../model/News.dart';
 
 import 'package:intl/intl.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
+
 // import 'package:camera/camera.dart';
 
 String formatDateTime(DateTime dateTime) {
@@ -11,6 +15,7 @@ String formatDateTime(DateTime dateTime) {
 }
 
 FirebaseDatabase _database = FirebaseDatabase.instance;
+FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
 
 class CreatePostPage extends StatefulWidget {
   const CreatePostPage({super.key});
@@ -25,7 +30,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
   late String _description;
   late String _title;
   late DateTime _date;
-  late Image _image;
+  late String _imageurl;
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +121,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
                     TextButton.icon(
                       icon: const Icon(Icons.add_a_photo_outlined, size: 18),
                       label: const Text("Camera"),
-                      onPressed: () {},
+                      onPressed: _takePicture,
                       // _takePicture,
                     ),
                     TextButton.icon(
@@ -142,27 +147,57 @@ class _CreatePostPageState extends State<CreatePostPage> {
           author: "_author",
           description: _description,
           title: _title,
-          imageurl: "",
+          imageurl: "eurelink-logo.jpg",
           dateCreated: DateTime.now());
-      // await addNews(JSON.stringify(news));
 
-      // var newsReference =
-      await _database.ref().child("news").set({
-        "title": _title,
-        "description": _description,
-        "author": "_author",
-        "imageurl": "",
-        "dateCreated": DateTime.now()
-      });
+      _database.ref().child("News").push().set(news.toJson());
 
       Navigator.pop(context);
     }
   }
 
-  void _takePicture() {
+  void _takePicture() async {
     // final _cameras = await availableCameras();
     // final firstCamera = _cameras.first;
+    final ImagePicker _picker = ImagePicker();
+
+    var permissionStatus = await Permission.camera.status;
+
+    if (permissionStatus.isGranted) {
+      final XFile? photo = await _picker.pickImage(source: ImageSource.camera);
+     }
+
   }
 
-  void _uploadPicture() {}
+  void _uploadPicture() async {
+    // PickedFile image;
+    //Check Permissions
+    await Permission.photos.request();
+
+    final ImagePicker _picker = ImagePicker();
+    // Pick an image
+
+    var permissionStatus = await Permission.photos.status;
+
+    if (permissionStatus.isGranted) {
+      final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+
+      // if (image != null){
+      //   //Upload to Firebase
+      //   var snapshot = await _firebaseStorage.ref()
+      //   .child('images/imageName')
+      //   .putFile(image);
+
+      //   var _imageurl = await snapshot.ref.getDownloadURL();
+
+      //   setState(() {
+      //     _imageurl = _imageurl;
+      //   });
+      // } else {
+      //   print('No Image Path Received');
+      // }
+    } else {
+      print('Permission not granted. Try Again with permission access');
+    }
+  }
 }
