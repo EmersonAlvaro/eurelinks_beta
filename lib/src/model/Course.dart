@@ -16,4 +16,12 @@ class Course {
     required this.comments,
     required this.evaluations,
   });
+
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "evaluations": [],
+        "comments": [],
+        "description": description,
+        "nameShort": nameShort
+      };
 }

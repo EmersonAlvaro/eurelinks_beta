@@ -1,3 +1,4 @@
+import 'package:eurelinks_beta/src/common/coursedata.dart';
 import 'package:flutter/material.dart';
 import '../model/Course.dart';
 import '../common/dumydata.dart';
@@ -10,6 +11,8 @@ class CourseView extends StatefulWidget {
   State<CourseView> createState() => _CoursePageState();
 }
 
+final List<Course> courseItems = createlistcourse();
+
 class _CoursePageState extends State<CourseView> {
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class _CoursePageState extends State<CourseView> {
       ),
       body: GridView.count(
         crossAxisCount: 2,
-        children: List.generate(courses.length, (index) {
+        children: List.generate(courseItems.length, (index) {
           return Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 2,
@@ -30,12 +33,12 @@ class _CoursePageState extends State<CourseView> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        SampleCourseItemDetailsView(courseItem: courses[index]),
+                    builder: (context) => SampleCourseItemDetailsView(
+                        courseItem: courseItems[index]),
                   ),
                 );
               },
-              child: Text(courses[index].nameShort),
+              child: Text(courseItems[index].nameShort),
             ),
           );
         }),

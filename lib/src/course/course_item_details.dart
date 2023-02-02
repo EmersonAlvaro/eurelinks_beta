@@ -39,7 +39,10 @@ class SampleCourseItemDetailsView extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const EvaluationPage()),
+            MaterialPageRoute(
+                builder: (context) => EvaluationPage(
+                      courseItem: courseItem,
+                    )),
           );
         },
       ),
@@ -74,7 +77,7 @@ class SampleCourseItemDetailsView extends StatelessWidget {
                   ),
                   const SizedBox(width: 16.0),
                   const SizedBox(width: 16.0),
-                  Text('Description:  ${courseItem.description}',
+                  Text('\nDescription:  ${courseItem.description}',
                       maxLines: 10,
                       style: Theme.of(context).textTheme.subtitle1,
                       overflow: TextOverflow.ellipsis),

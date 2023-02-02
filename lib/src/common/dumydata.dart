@@ -42,7 +42,7 @@ final List<Comment> comments = List.generate(
   30,
   (index) => Comment(
     text: 'This is a comment by user ${index + 1}',
-    author: users[index],
+    // author: "${users[index]}",
     timestamp: DateTime.now(),
   ),
 );
@@ -67,7 +67,7 @@ final List<Course> courses = List.generate(
       10,
       (index) => Comment(
         text: 'This is a comment by user ${index + 1}',
-        author: users[index],
+        // author: "${users[index]}",
         timestamp: DateTime.now(),
       ),
     ),
@@ -96,7 +96,7 @@ final List<Job> jobs = List.generate(
 );
 
 final List<Club> clubs = List.generate(
-  30,
+  8,
   (index) => Club(
     name: 'Club ${index + 1}',
     nameShort: 'Club_Item_${index + 1}',
