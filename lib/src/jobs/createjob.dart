@@ -54,6 +54,7 @@ class _CreateJobPageState extends State<CreateJobPage> {
                     }
                     return null;
                   },
+                  onSaved: (value) => _title = value!,
                 ),
                 SizedBox(height: 16.0),
                 TextFormField(
@@ -69,6 +70,7 @@ class _CreateJobPageState extends State<CreateJobPage> {
                     }
                     return null;
                   },
+                  onSaved: (value) => _company = value!,
                 ),
                 SizedBox(height: 16.0),
                 TextFormField(
@@ -84,6 +86,7 @@ class _CreateJobPageState extends State<CreateJobPage> {
                     }
                     return null;
                   },
+                  onSaved: (value) => _location = value!,
                 ),
                 SizedBox(height: 16.0),
                 TextFormField(
@@ -99,6 +102,7 @@ class _CreateJobPageState extends State<CreateJobPage> {
                     }
                     return null;
                   },
+                  onSaved: (value) => _description = value!,
                 ),
                 SizedBox(height: 16.0),
                 TextFormField(
@@ -114,6 +118,7 @@ class _CreateJobPageState extends State<CreateJobPage> {
                     }
                     return null;
                   },
+                  onSaved: (value) => _urlpost = value!,
                 ),
               ],
             ),
@@ -123,7 +128,7 @@ class _CreateJobPageState extends State<CreateJobPage> {
     );
   }
 
-  void _submit() {
+  void _submit() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       // Use the data from the form fields to create a new account
@@ -135,7 +140,7 @@ class _CreateJobPageState extends State<CreateJobPage> {
           urlpost: _urlpost,
           postedDate: DateTime.now());
 
-      _database.ref().child("jobs").push().set(_job.toJson());
+      _database.ref().child("Jobs").push().set(_job.toJson());
       Navigator.pop(context);
     }
   }

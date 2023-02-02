@@ -1,6 +1,7 @@
 import 'Comment.dart';
 import 'Evaluation.dart';
 import 'User.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class Course {
   String name;
@@ -16,4 +17,13 @@ class Course {
     required this.comments,
     required this.evaluations,
   });
+
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "nameShort": nameShort,
+        "description": description,
+        "comments": [],
+        "evaluations": []
+      };
 }
+

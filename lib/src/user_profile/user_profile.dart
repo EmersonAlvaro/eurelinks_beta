@@ -23,10 +23,14 @@ class _ProfilePageState extends State<ProflieView> {
 
   void _getUserDetails() async {
     var uid = FirebaseAuth.instance.currentUser!.uid;
-    final userData = await _database.ref().child("users").child(uid).once();
-    var userMap = userData.snapshot.value as Map<String, dynamic>;
-    // Convert the map to a UserDetails object
+    final userData = await _database.ref().child("users").child(uid).get();
+    // var userMap = userData.value as Map<String, dynamic>;
+    // // Convert the map to a UserDetails object
+    // _userDetails = UserDetails.fromJson(userMap);
+    var userList = userData.value as List<dynamic>;
+    var userMap = userList.first as Map<String, dynamic>;
     _userDetails = UserDetails.fromJson(userMap);
+
     print(_userDetails);
     setState(() {});
   }
@@ -51,44 +55,68 @@ class _ProfilePageState extends State<ProflieView> {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: <Widget>[
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: Text("Last Name:",
-                        style: TextStyle(fontWeight: FontWeight.bold)),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text("Last Name:",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                    ),
                   ),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: Text("${_userDetails.lastName}"),
-                  ),
-                  SizedBox(height: 16.0),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: Text("First Name:",
-                        style: TextStyle(fontWeight: FontWeight.bold)),
-                  ),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: Text("${_userDetails.firstName}"),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text("${_userDetails.lastName}"),
+                    ),
                   ),
                   SizedBox(height: 16.0),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: Text("Email:",
-                        style: TextStyle(fontWeight: FontWeight.bold)),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text("First Name:",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                    ),
                   ),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: Text("${_userDetails.email}"),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text("${_userDetails.firstName}"),
+                    ),
                   ),
                   SizedBox(height: 16.0),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: Text("Role:",
-                        style: TextStyle(fontWeight: FontWeight.bold)),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text("Email:",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                    ),
                   ),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: Text("${_userDetails.role}"),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text("${_userDetails.email}"),
+                    ),
+                  ),
+                  SizedBox(height: 16.0),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text("Role:",
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text("${_userDetails.role}"),
+                    ),
                   ),
                 ],
               ),

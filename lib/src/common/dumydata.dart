@@ -10,7 +10,9 @@ import '../model/News.dart';
 import '../model/Event.dart';
 
 List<News> createNewsList() {
+  
   List<News> newsList = [];
+
   for (int i = 1; i <= 30; i++) {
     News news = News(
         title: "News $i",
