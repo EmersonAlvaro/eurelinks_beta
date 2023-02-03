@@ -27,15 +27,15 @@ Future<List<News>> getAllNews() async {
     news.add(News.fromJson(snapshotValue));
   }
 
-  refNews.onValue.listen(
-    (event) {
-      for (final child in event.snapshot.children) {
-        Map<String, dynamic> snapshotValue =
-            Map<String, dynamic>.from(child.value as Map);
-        news.add(News.fromJson(snapshotValue));
-      }
-    },
-  );
+  // refNews.onValue.listen(
+  //   (event) {
+  //     for (final child in event.snapshot.children) {
+  //       Map<String, dynamic> snapshotValue =
+  //           Map<String, dynamic>.from(child.value as Map);
+  //       news.add(News.fromJson(snapshotValue));
+  //     }
+  //   },
+  // );
 
   return news;
 }
@@ -51,15 +51,15 @@ Future<List<Job>> getAllJobs() async {
     jobs.add(Job.fromJson(snapshotValue));
   }
 
-  refJobs.onValue.listen(
-    (event) {
-      for (final child in event.snapshot.children) {
-        Map<String, dynamic> snapshotValue =
-            Map<String, dynamic>.from(child.value as Map);
-        jobs.add(Job.fromJson(snapshotValue));
-      }
-    },
-  );
+  // refJobs.onValue.listen(
+  //   (event) {
+  //     for (final child in event.snapshot.children) {
+  //       Map<String, dynamic> snapshotValue =
+  //           Map<String, dynamic>.from(child.value as Map);
+  //       jobs.add(Job.fromJson(snapshotValue));
+  //     }
+  //   },
+  // );
 
   return jobs;
 }

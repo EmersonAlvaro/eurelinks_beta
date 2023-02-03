@@ -31,7 +31,7 @@ class SampleCourseItemDetailsView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('${courseItem.name} Details'),
+        title: Text('${courseItem.nameShort} Details'),
       ),
       floatingActionButton: FloatingActionButton.extended(
         icon: const Icon(Icons.post_add_outlined),
@@ -66,19 +66,26 @@ class SampleCourseItemDetailsView extends StatelessWidget {
                 ],
               ),
             ),
+            const SizedBox(height: 16.0),
             Row(children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(width: 16.0),
-                  Text(
-                    'Name: ${courseItem.name}',
-                    style: Theme.of(context).textTheme.headline6,
+                  FittedBox(
+                    fit: BoxFit.contain,
+                    child: Text(
+                      'Name: ${courseItem.name}',
+                      // widget.model.poem,
+                      textAlign: TextAlign.justify,
+                      // maxLines: 10,
+                      style: Theme.of(context).textTheme.subtitle2,
+                    ),
                   ),
                   const SizedBox(width: 16.0),
                   const SizedBox(width: 16.0),
                   Text('\nDescription:  ${courseItem.description}',
-                      maxLines: 10,
+                      maxLines: 20,
                       style: Theme.of(context).textTheme.subtitle1,
                       overflow: TextOverflow.ellipsis),
                 ],
@@ -90,7 +97,7 @@ class SampleCourseItemDetailsView extends StatelessWidget {
               color: Colors.black,
               thickness: 2,
             ),
-            Row(
+            Column(
               children: [
                 Container(
                   decoration: BoxDecoration(
@@ -98,12 +105,12 @@ class SampleCourseItemDetailsView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   margin: const EdgeInsets.all(8),
-                  child: Column(
+                  child: Row(
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: Text(
-                          'General Evaluation',
+                          'General Evaluation ',
                           style: Theme.of(context).textTheme.subtitle1,
                         ),
                       ),
@@ -124,7 +131,7 @@ class SampleCourseItemDetailsView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   margin: const EdgeInsets.all(8),
-                  child: Column(
+                  child: Row(
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -150,7 +157,7 @@ class SampleCourseItemDetailsView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   margin: const EdgeInsets.all(8),
-                  child: Column(
+                  child: Row(
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -176,7 +183,7 @@ class SampleCourseItemDetailsView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   margin: const EdgeInsets.all(8),
-                  child: Column(
+                  child: Row(
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
