@@ -92,7 +92,7 @@ final List<Job> jobs = List.generate(
     location: 'Location ${index + 1}',
     description: 'This is a description for job ${index + 1}',
     urlpost: 'https://job${index + 1}.com',
-    postedDate: DateTime.now(),
+    // postedDate: DateTime.now(),
   ),
 );
 

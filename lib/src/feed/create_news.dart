@@ -47,10 +47,9 @@ class _CreatePostPageState extends State<CreatePostPage> {
     var uid = FirebaseAuth.instance.currentUser!.uid;
     final userData = await _database.ref().child("users").child(uid).get();
     var userList = userData.value as List<dynamic>;
-    var userMap = userList.first as Map<String, dynamic>;
-    _userDetails = UserDetails.fromJson(userMap);
-
-    print(_userDetails);
+    Map<String, dynamic> snapshotValue =
+        Map<String, dynamic>.from(userList.first as Map);
+    _userDetails = UserDetails.fromJson(snapshotValue);
     setState(() {});
   }
 

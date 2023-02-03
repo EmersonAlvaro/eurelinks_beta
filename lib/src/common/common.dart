@@ -1,4 +1,3 @@
-
 import '../model/User.dart';
 import '../model/News.dart';
 import '../model/Job.dart';
@@ -6,6 +5,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 FirebaseDatabase _database = FirebaseDatabase.instance;
+
+// Future<UserDetails> _getUserDetails() async {
+//   var uid = FirebaseAuth.instance.currentUser!.uid;
+//   final userData = await _database.ref().child("users").child(uid).get();
+//   // var userList = userData.value as List<dynamic>;
+//   // var userMap = userList.first as Map<String, dynamic>;
+//   Map<String, dynamic> snapshotValue =
+//       Map<String, dynamic>.from(userData.value as Map);
+//   return UserDetails.fromJson(snapshotValue);
+// }
 
 Future<List<News>> getAllNews() async {
   final refNews = _database.ref().child('News');

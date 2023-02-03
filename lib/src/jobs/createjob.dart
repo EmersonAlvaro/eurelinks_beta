@@ -133,12 +133,13 @@ class _CreateJobPageState extends State<CreateJobPage> {
       _formKey.currentState!.save();
       // Use the data from the form fields to create a new account
       Job job = Job(
-          title: _title,
-          company: _company,
-          location: _location,
-          description: _description,
-          urlpost: _urlpost,
-          postedDate: DateTime.now());
+        title: _title,
+        company: _company,
+        location: _location,
+        description: _description,
+        urlpost: _urlpost,
+        // postedDate: DateTime.now(),
+      );
 
       _database.ref().child("Jobs").push().set(job.toJson());
       Navigator.pop(context);

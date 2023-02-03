@@ -108,7 +108,7 @@ class JobCard extends StatelessWidget {
               ),
               const SizedBox(height: 8.0),
               Text(
-                "Post Date: ${DateFormat.yMMMd().format(job.postedDate)}",
+                "Post Date: ${DateFormat.yMMMd().format(DateTime.now())}",
                 style: Theme.of(context).textTheme.caption,
               ),
             ],
