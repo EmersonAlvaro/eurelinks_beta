@@ -27,6 +27,8 @@ dependencies:
   shared_preferences: ^2.0.16
   table_calendar: ^3.0.8
   firebase_storage: ^11.0.10
+  url_launcher: ^5.0.2
+  fluttertoast: ^8.1.2
 
 dev_dependencies:
   flutter_test:
