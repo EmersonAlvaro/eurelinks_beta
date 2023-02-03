@@ -1,12 +1,12 @@
 import '../model/BDS.dart';
 
-
-BDS bds_members_function(){
+BDS bds_members_function() {
   BDS bdsMembers = BDS(
       presidentName: "Lorenzo Pisanò",
-      vicePresidentName: "BUzzinga",
+      vicePresidentName: "Lorenzo Pisanò",
       secretaryName: "Lucas Georget",
-      description: "BUzzingaBUzzingaBUzzingaBUzzingaBUzzinga",
+      description:
+          "The student office or BDE is an association that animates the student life of its school or university. This office is made up of students elected by their classmates and who represent them to the administration.",
       logoPath: "assets/images/bde.jpg",
       address: '''
       BDE EURECOM
@@ -15,9 +15,6 @@ BDS bds_members_function(){
       06410 Biot
       ''',
       contact: "+33(0)493008221",
-      email: "bde@eurecom.fr"
-
-  );
+      email: "bde@eurecom.fr");
   return bdsMembers;
 }
-
