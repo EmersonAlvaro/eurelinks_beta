@@ -54,12 +54,6 @@ class _JobsViewPageState extends State<JobsView> {
                           child: Icon(
                             Icons.business_center,
                           ),
-                          // Image.network(
-                          //   jobs[index].urlpost,
-                          //   width: 50,
-                          //   height: 50,
-                          //   fit: BoxFit.cover,
-                          // ),
                         ),
                         SizedBox(width: 16.0),
                         Expanded(

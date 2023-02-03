@@ -24,9 +24,6 @@ class _ProfilePageState extends State<ProflieView> {
   void _getUserDetails() async {
     var uid = FirebaseAuth.instance.currentUser!.uid;
     final userData = await _database.ref().child("users").child(uid).get();
-    // var userMap = userData.value as Map<String, dynamic>;
-    // // Convert the map to a UserDetails object
-    // _userDetails = UserDetails.fromJson(userMap);
     var userList = userData.value as List<dynamic>;
     var userMap = userList.first as Map<String, dynamic>;
     _userDetails = UserDetails.fromJson(userMap);

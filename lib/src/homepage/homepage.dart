@@ -22,7 +22,7 @@ class _MyStatefulWidgetState extends State<HomePage> {
   bool _isDark = false;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    FeedNews(),
+    FeedNewsView(),
     CalendarViewPage(),
     TimelineView(),
     JobsView(),

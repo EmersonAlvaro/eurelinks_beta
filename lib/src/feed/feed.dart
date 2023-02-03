@@ -7,21 +7,16 @@ import 'package:intl/intl.dart';
 
 bool _isPressed = true;
 
-final List<News> newsItems = createNewsList();
+class FeedNewsView extends StatefulWidget {
+  const FeedNewsView({super.key});
+  @override
+  State<FeedNewsView> createState() => _FeedNewsPageState();
+}
 
-class FeedNews extends StatelessWidget {
-  const FeedNews({super.key});
-
+class _FeedNewsPageState extends State<FeedNewsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        restorationId: "list-news-feed-news",
-        // padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
-        children: [
-          for (final news in newsItems) NewsCard(news: news),
-        ],
-      ),
       floatingActionButton: FloatingActionButton.extended(
         icon: const Icon(Icons.post_add_outlined),
         label: const Text('post'),
@@ -33,6 +28,24 @@ class FeedNews extends StatelessWidget {
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      body: FutureBuilder<List<News>>(
+        future: getAllNews(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasData) {
+              return ListView(
+                restorationId: "list-news-feed-news",
+                children: [
+                  for (final news in snapshot.data!) NewsCard(news: news),
+                ],
+              );
+            } else if (snapshot.hasError) {
+              return Center(child: Text("Error: ${snapshot.error}"));
+            }
+          }
+          return Center(child: CircularProgressIndicator());
+        },
+      ),
     );
   }
 }
@@ -81,7 +94,6 @@ class NewsCard extends StatelessWidget {
             Row(
               children: [
                 IconButton(
-                  // icon: const Icon(Icons.favorite_outline_rounded),
                   icon: _isPressed
                       ? const Icon(Icons.favorite)
                       : const Icon(Icons.favorite_outlined),
@@ -103,35 +115,8 @@ class NewsCard extends StatelessWidget {
               color: Colors.black,
               thickness: 2,
             ),
-            // Padding(
-            //   padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-            //   child: DefaultTextStyle(
-            //     softWrap: false,
-            //     overflow: TextOverflow.ellipsis,
-            //     style: Theme.of(context).textTheme.subtitle1!,
-            //     child: Column(
-            //       crossAxisAlignment: CrossAxisAlignment.start,
-            //       children: [
-            //         Text(
-            //           'Titule: ${news.title}',
-            //           // style: const TextStyle(fontSize: 20),
-            //           style: Theme.of(context).textTheme.headline6,
-            //         ),
-            //         SizedBox(height: 8.0),
-            //         Text(
-            //           'Description:  ${news.description}',
-            //           maxLines: 10,
-            //           style: Theme.of(context).textTheme.bodyText2,
-            //           // style: Theme.of(context).primaryTextTheme.subtitle2!,
-            //           // overflow: TextOverflow.ellipsis,
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
             Text(
               'Titule: ${news.title}',
-              // style: const TextStyle(fontSize: 20),
               style: Theme.of(context).textTheme.headline6,
             ),
             SizedBox(height: 8.0),
@@ -139,8 +124,6 @@ class NewsCard extends StatelessWidget {
               'Description:  ${news.description}',
               maxLines: 10,
               style: Theme.of(context).textTheme.bodyText2,
-              // style: Theme.of(context).primaryTextTheme.subtitle2!,
-              // overflow: TextOverflow.ellipsis,
             ),
             SizedBox(height: 8.0),
             Text(

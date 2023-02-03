@@ -1,16 +1,62 @@
+import 'dart:collection';
+import 'dart:convert';
+import 'dart:developer';
+
 import '../model/Calendar.dart';
 import '../model/User.dart';
 import '../model/News.dart';
-
+import '../model/Job.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 FirebaseDatabase _database = FirebaseDatabase.instance;
 
-Future<void> addNews(News news) async {
-  // var newsReference = _database.ref().child("news").push();
-  // newsReference.set(news);
-  _database.ref().child("news").child("12131").set(news);
+Future<List<News>> getAllNews() async {
+  final _refNews = _database.ref().child('News');
+  List<News> news = [];
+  final snapshot = await _refNews.get();
+  for (final child in snapshot.children) {
+    // var jss = json.decode(json.encode(child.value)) as Map<String, dynamic>;
+    Map<String, dynamic> _snapshotValue =
+        Map<String, dynamic>.from(child.value as Map);
+    news.add(News.fromJson(_snapshotValue));
+  }
+
+  _refNews.onValue.listen(
+    (event) {
+      for (final child in event.snapshot.children) {
+        Map<String, dynamic> _snapshotValue =
+            Map<String, dynamic>.from(child.value as Map);
+        news.add(News.fromJson(_snapshotValue));
+      }
+    },
+  );
+
+  return news;
+}
+
+Future<List<Job>> getAllJobs() async {
+  final _refJobs = _database.ref().child('Jobs');
+  List<Job> jobs = [];
+  final snapshot = await _refJobs.get();
+  for (final child in snapshot.children) {
+    // var jss = json.decode(json.encode(child.value)) as Map<String, dynamic>;
+    Map<String, dynamic> _snapshotValue =
+        Map<String, dynamic>.from(child.value as Map);
+    jobs.add(Job.fromJson(_snapshotValue));
+  }
+
+  _refJobs.onValue.listen(
+    (event) {
+      for (final child in event.snapshot.children) {
+        Map<String, dynamic> _snapshotValue =
+            Map<String, dynamic>.from(child.value as Map);
+        jobs.add(Job.fromJson(_snapshotValue));
+      }
+    },
+  );
+
+  return jobs;
 }
 
 // sign in with email and password
