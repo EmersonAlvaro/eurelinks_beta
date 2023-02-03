@@ -1,6 +1,5 @@
 import 'package:eurelinks_beta/src/common/clubsdata.dart';
 import 'package:flutter/material.dart';
-import '../common/dumydata.dart';
 import 'club_item_details.dart';
 import '../model/Club.dart';
 

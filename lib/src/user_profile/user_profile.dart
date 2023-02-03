@@ -47,69 +47,69 @@ class _ProfilePageState extends State<ProflieView> {
         ],
       ),
       body: _userDetails == null
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Container(
                       alignment: Alignment.centerLeft,
-                      child: Text("Last Name:",
+                      child: const Text("Last Name:",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Container(
                       alignment: Alignment.centerLeft,
                       child: Text("${_userDetails.lastName}"),
                     ),
                   ),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Container(
                       alignment: Alignment.centerLeft,
-                      child: Text("First Name:",
+                      child: const Text("First Name:",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Container(
                       alignment: Alignment.centerLeft,
                       child: Text("${_userDetails.firstName}"),
                     ),
                   ),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Container(
                       alignment: Alignment.centerLeft,
-                      child: Text("Email:",
+                      child: const Text("Email:",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Container(
                       alignment: Alignment.centerLeft,
                       child: Text("${_userDetails.email}"),
                     ),
                   ),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Container(
                       alignment: Alignment.centerLeft,
-                      child: Text("Role:",
+                      child: const Text("Role:",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Container(
                       alignment: Alignment.centerLeft,
                       child: Text("${_userDetails.role}"),

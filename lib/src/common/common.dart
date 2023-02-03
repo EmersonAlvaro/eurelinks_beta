@@ -1,8 +1,4 @@
-import 'dart:collection';
-import 'dart:convert';
-import 'dart:developer';
 
-import '../model/Calendar.dart';
 import '../model/User.dart';
 import '../model/News.dart';
 import '../model/Job.dart';
@@ -12,22 +8,22 @@ import 'package:firebase_database/firebase_database.dart';
 FirebaseDatabase _database = FirebaseDatabase.instance;
 
 Future<List<News>> getAllNews() async {
-  final _refNews = _database.ref().child('News');
+  final refNews = _database.ref().child('News');
   List<News> news = [];
-  final snapshot = await _refNews.get();
+  final snapshot = await refNews.get();
   for (final child in snapshot.children) {
     // var jss = json.decode(json.encode(child.value)) as Map<String, dynamic>;
-    Map<String, dynamic> _snapshotValue =
+    Map<String, dynamic> snapshotValue =
         Map<String, dynamic>.from(child.value as Map);
-    news.add(News.fromJson(_snapshotValue));
+    news.add(News.fromJson(snapshotValue));
   }
 
-  _refNews.onValue.listen(
+  refNews.onValue.listen(
     (event) {
       for (final child in event.snapshot.children) {
-        Map<String, dynamic> _snapshotValue =
+        Map<String, dynamic> snapshotValue =
             Map<String, dynamic>.from(child.value as Map);
-        news.add(News.fromJson(_snapshotValue));
+        news.add(News.fromJson(snapshotValue));
       }
     },
   );
@@ -36,22 +32,22 @@ Future<List<News>> getAllNews() async {
 }
 
 Future<List<Job>> getAllJobs() async {
-  final _refJobs = _database.ref().child('Jobs');
+  final refJobs = _database.ref().child('Jobs');
   List<Job> jobs = [];
-  final snapshot = await _refJobs.get();
+  final snapshot = await refJobs.get();
   for (final child in snapshot.children) {
     // var jss = json.decode(json.encode(child.value)) as Map<String, dynamic>;
-    Map<String, dynamic> _snapshotValue =
+    Map<String, dynamic> snapshotValue =
         Map<String, dynamic>.from(child.value as Map);
-    jobs.add(Job.fromJson(_snapshotValue));
+    jobs.add(Job.fromJson(snapshotValue));
   }
 
-  _refJobs.onValue.listen(
+  refJobs.onValue.listen(
     (event) {
       for (final child in event.snapshot.children) {
-        Map<String, dynamic> _snapshotValue =
+        Map<String, dynamic> snapshotValue =
             Map<String, dynamic>.from(child.value as Map);
-        jobs.add(Job.fromJson(_snapshotValue));
+        jobs.add(Job.fromJson(snapshotValue));
       }
     },
   );

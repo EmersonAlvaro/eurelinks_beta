@@ -24,7 +24,7 @@ class _CreateJobPageState extends State<CreateJobPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Create Job'),
+        title: const Text('Create Job'),
         actions: [
           IconButton(
             icon: const Icon(
@@ -36,7 +36,7 @@ class _CreateJobPageState extends State<CreateJobPage> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Form(
             key: _formKey,
             child: Column(
@@ -46,7 +46,7 @@ class _CreateJobPageState extends State<CreateJobPage> {
                     labelText: 'Job Title',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    prefixIcon: Icon(Icons.title),
+                    prefixIcon: const Icon(Icons.title),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -56,13 +56,13 @@ class _CreateJobPageState extends State<CreateJobPage> {
                   },
                   onSaved: (value) => _title = value!,
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Company',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    prefixIcon: Icon(Icons.business),
+                    prefixIcon: const Icon(Icons.business),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -72,13 +72,13 @@ class _CreateJobPageState extends State<CreateJobPage> {
                   },
                   onSaved: (value) => _company = value!,
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Location',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    prefixIcon: Icon(Icons.location_on),
+                    prefixIcon: const Icon(Icons.location_on),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -88,13 +88,13 @@ class _CreateJobPageState extends State<CreateJobPage> {
                   },
                   onSaved: (value) => _location = value!,
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Description',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    prefixIcon: Icon(Icons.description),
+                    prefixIcon: const Icon(Icons.description),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -104,13 +104,13 @@ class _CreateJobPageState extends State<CreateJobPage> {
                   },
                   onSaved: (value) => _description = value!,
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'URL to Post',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    prefixIcon: Icon(Icons.link),
+                    prefixIcon: const Icon(Icons.link),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -132,7 +132,7 @@ class _CreateJobPageState extends State<CreateJobPage> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       // Use the data from the form fields to create a new account
-      Job _job = Job(
+      Job job = Job(
           title: _title,
           company: _company,
           location: _location,
@@ -140,7 +140,7 @@ class _CreateJobPageState extends State<CreateJobPage> {
           urlpost: _urlpost,
           postedDate: DateTime.now());
 
-      _database.ref().child("Jobs").push().set(_job.toJson());
+      _database.ref().child("Jobs").push().set(job.toJson());
       Navigator.pop(context);
     }
   }

@@ -32,18 +32,18 @@ class _CreateTimelinePageState extends State<TimelineView> {
           return InkWell(
             onTap: () {},
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.0),
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Column(
                 children: <Widget>[
                   AnimatedContainer(
-                    duration: Duration(milliseconds: 300),
+                    duration: const Duration(milliseconds: 300),
                     curve: Curves.easeInOut,
                     width: double.infinity,
                     // height: selectedIndex == index ? 150 : 100,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: Colors.black12,
                           offset: Offset(0, 2),
@@ -52,7 +52,7 @@ class _CreateTimelinePageState extends State<TimelineView> {
                       ],
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -94,9 +94,9 @@ class _CreateTimelinePageState extends State<TimelineView> {
                                         .headline6
                                         ?.copyWith(fontWeight: FontWeight.bold),
                                   ),
-                                  SizedBox(height: 10),
+                                  const SizedBox(height: 10),
                                   Text(events[index].description),
-                                  SizedBox(height: 10),
+                                  const SizedBox(height: 10),
                                   Text(DateFormat.yMMMd()
                                       .format(events[index].date)
                                       .toString()),
@@ -108,7 +108,7 @@ class _CreateTimelinePageState extends State<TimelineView> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Container(
                     width: double.infinity,
                     height: 1,

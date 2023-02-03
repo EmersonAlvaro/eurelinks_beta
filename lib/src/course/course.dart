@@ -1,7 +1,6 @@
 import 'package:eurelinks_beta/src/common/coursedata.dart';
 import 'package:flutter/material.dart';
 import '../model/Course.dart';
-import '../common/dumydata.dart';
 import 'course_item_details.dart';
 
 class CourseView extends StatefulWidget {

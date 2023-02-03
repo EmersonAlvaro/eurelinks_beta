@@ -1,7 +1,5 @@
 import 'Comment.dart';
 import 'Evaluation.dart';
-import 'User.dart';
-import 'package:firebase_database/firebase_database.dart';
 
 class Course {
   String name;

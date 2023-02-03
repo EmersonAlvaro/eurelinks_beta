@@ -30,7 +30,7 @@ class _EvaluationPageState extends State<EvaluationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Evaluation'),
+        title: const Text('Add Evaluation'),
       ),
       body: Form(
         key: _formKey,

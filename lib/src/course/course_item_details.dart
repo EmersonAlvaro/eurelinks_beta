@@ -57,7 +57,7 @@ class SampleCourseItemDetailsView extends StatelessWidget {
                 children: [
                   Positioned.fill(
                     child: Ink.image(
-                      image: NetworkImage(
+                      image: const NetworkImage(
                           "https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg"),
                       fit: BoxFit.cover,
                       child: Container(),
@@ -97,7 +97,7 @@ class SampleCourseItemDetailsView extends StatelessWidget {
                     border: Border.all(color: Colors.black12),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  margin: EdgeInsets.all(8),
+                  margin: const EdgeInsets.all(8),
                   child: Column(
                     children: [
                       Padding(
@@ -123,7 +123,7 @@ class SampleCourseItemDetailsView extends StatelessWidget {
                     border: Border.all(color: Colors.black12),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  margin: EdgeInsets.all(8),
+                  margin: const EdgeInsets.all(8),
                   child: Column(
                     children: [
                       Padding(
@@ -149,7 +149,7 @@ class SampleCourseItemDetailsView extends StatelessWidget {
                     border: Border.all(color: Colors.black12),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  margin: EdgeInsets.all(8),
+                  margin: const EdgeInsets.all(8),
                   child: Column(
                     children: [
                       Padding(
@@ -175,7 +175,7 @@ class SampleCourseItemDetailsView extends StatelessWidget {
                     border: Border.all(color: Colors.black12),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  margin: EdgeInsets.all(8),
+                  margin: const EdgeInsets.all(8),
                   child: Column(
                     children: [
                       Padding(

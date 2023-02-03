@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'edit-bde-bds-view.dart';
-import 'package:flutter/material.dart';
 import '../common/bdsData.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class BDSView extends StatefulWidget {
@@ -12,7 +11,9 @@ class BDSView extends StatefulWidget {
   @override
   State<BDSView> createState() => _BDSPageState();
 }
-  final bds_team = bds_members_function();
+
+final bds_team = bds_members_function();
+
 class _BDSPageState extends State<BDSView> {
   @override
   Widget build(BuildContext context) {
@@ -43,42 +44,38 @@ class _BDSPageState extends State<BDSView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Image.asset(
-                  'assets/images/bde.jpg',
-                  height: 150,
-                  width: 150),
-              Image.asset(
-                  'assets/images/bed_rock_logo.png',
-                  height: 150,
-                  width: 150),
+              Image.asset('assets/images/bde.jpg', height: 150, width: 150),
+              Image.asset('assets/images/bed_rock_logo.png',
+                  height: 150, width: 150),
             ],
           ),
           Padding(
-            padding: EdgeInsets.only(top: 2.0, bottom: 10.0, left: 5.0, right: 5.0),
+            padding: const EdgeInsets.only(
+                top: 2.0, bottom: 10.0, left: 5.0, right: 5.0),
             child: Text(
-              '${bds_team.description}',
-              style: TextStyle(fontSize: 20),
+              bds_team.description,
+              style: const TextStyle(fontSize: 20),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+            padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
             child: Text(
               "President: ${bds_team.presidentName}",
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+            padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
             child: Text(
               "Vice President: ${bds_team.vicePresidentName}",
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+            padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
             child: Text(
               "Secretary: ${bds_team.secretaryName}",
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
           ),
           const SizedBox(height: 30),
@@ -105,7 +102,8 @@ class _BDSPageState extends State<BDSView> {
                     padding: const EdgeInsets.all(16.0),
                     textStyle: const TextStyle(fontSize: 20),
                   ),
-                  onPressed: () => launch("tel://${bds_team.contact}"),
+                  // onPressed: () => launch("tel://${bds_team.contact}"),
+                  onPressed: () {},
                   child: const Text('Contact Us'),
                 ),
               ],
@@ -136,7 +134,8 @@ class _BDSPageState extends State<BDSView> {
                     textStyle: const TextStyle(fontSize: 20),
                   ),
                   onPressed: () async {
-                    await Clipboard.setData(ClipboardData(text: "${bds_team.email}"));
+                    await Clipboard.setData(
+                        ClipboardData(text: "${bds_team.email}"));
                     Fluttertoast.showToast(
                         msg: "Email ID Copied to Clipboard",
                         toastLength: Toast.LENGTH_SHORT,
@@ -144,9 +143,9 @@ class _BDSPageState extends State<BDSView> {
                         timeInSecForIosWeb: 1,
                         backgroundColor: Colors.grey,
                         textColor: Colors.white,
-                        fontSize: 16.0
-                    );
+                        fontSize: 16.0);
                   },
+                  // onPressed: () {},
                   child: const Text('Email Us'),
                 ),
               ],
@@ -177,8 +176,10 @@ class _BDSPageState extends State<BDSView> {
                     textStyle: const TextStyle(fontSize: 20),
                   ),
                   onPressed: () async {
-                    await launch('https://www.google.com/maps/place/Eurecom/@43.614386,7.071125,17z/data=!3m1!4b1!4m5!3m4!1s0x12cc2bbceb8ef3b9:0x22dae297f1be6add!8m2!3d43.614386!4d7.071125');
+                    await launch(
+                        'https://www.google.com/maps/place/Eurecom/@43.614386,7.071125,17z/data=!3m1!4b1!4m5!3m4!1s0x12cc2bbceb8ef3b9:0x22dae297f1be6add!8m2!3d43.614386!4d7.071125');
                   },
+                  // onPressed: () {},
                   child: const Text('Locate Us'),
                 ),
               ],

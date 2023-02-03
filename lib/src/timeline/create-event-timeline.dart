@@ -21,7 +21,7 @@ class _CreateEventTimelineState extends State<CreateEventTimeline> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Create Event Timeline'),
+        title: const Text('Create Event Timeline'),
         actions: [
           IconButton(
             icon: const Icon(
@@ -33,7 +33,7 @@ class _CreateEventTimelineState extends State<CreateEventTimeline> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Form(
             key: _formKey,
             child: Column(
@@ -43,7 +43,7 @@ class _CreateEventTimelineState extends State<CreateEventTimeline> {
                     labelText: 'Event Title',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    prefixIcon: Icon(Icons.title),
+                    prefixIcon: const Icon(Icons.title),
                   ),
                   onSaved: (value) => _eventName = value!,
                   validator: (value) {
@@ -53,13 +53,13 @@ class _CreateEventTimelineState extends State<CreateEventTimeline> {
                     return null;
                   },
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Description',
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    prefixIcon: Icon(Icons.description),
+                    prefixIcon: const Icon(Icons.description),
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -69,7 +69,7 @@ class _CreateEventTimelineState extends State<CreateEventTimeline> {
                   },
                   onSaved: (value) => _description = value!,
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 DateTimeFormField(
                   decoration: const InputDecoration(
                     hintStyle: TextStyle(color: Colors.black45),
@@ -89,7 +89,7 @@ class _CreateEventTimelineState extends State<CreateEventTimeline> {
                     _start_datetime = value;
                   },
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
               ],
             ),
           ),

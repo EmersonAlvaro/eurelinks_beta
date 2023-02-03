@@ -1,14 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import '../common/common.dart';
 import '../model/News.dart';
 import '../model/User.dart';
+import '../model/Job.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 // import 'package:camera/camera.dart';
@@ -39,6 +38,8 @@ class _CreatePostPageState extends State<CreatePostPage> {
   @override
   void initState() {
     super.initState();
+    _imageurl =
+        "https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg";
     _getUserDetails();
   }
 
@@ -68,7 +69,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
         ],
       ),
       body: _userDetails == null
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : Column(children: [
               Padding(
                 padding: const EdgeInsets.only(
@@ -107,7 +108,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
                             // border: OutlineInputBorder(),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10)),
-                            prefixIcon: Icon(Icons.title),
+                            prefixIcon: const Icon(Icons.title),
                             hintText: "Write the post title",
                             helperText: "Write the post title ",
                             labelText: "Write the post title",
@@ -129,7 +130,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
                           // border: OutlineInputBorder(),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10)),
-                          prefixIcon: Icon(Icons.description),
+                          prefixIcon: const Icon(Icons.description),
                           hintText: "Write the post description",
                           helperText: "Write the post description",
                           labelText: "Write the post description",
@@ -181,19 +182,19 @@ class _CreatePostPageState extends State<CreatePostPage> {
   }
 
   void _uploadPicture() async {
-    final ImagePicker _picker = ImagePicker();
+    final ImagePicker picker = ImagePicker();
 
     // var permissionStatus = await Permission.camera.request();
 
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
     File file = File(image!.path);
 
-    final _storageRef = _firebaseStorage.ref().child('news').child(file.path);
+    final storageRef = _firebaseStorage.ref().child('news').child(file.path);
 
-    TaskSnapshot uploadedFile = await _storageRef.putFile(file);
+    TaskSnapshot uploadedFile = await storageRef.putFile(file);
 
     if (uploadedFile.state == TaskState.success) {
-      _imageurl = await _storageRef.getDownloadURL();
+      _imageurl = await storageRef.getDownloadURL();
     }
 
     setState(() {

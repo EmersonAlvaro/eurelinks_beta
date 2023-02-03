@@ -52,7 +52,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    prefixIcon: Icon(Icons.person),
+                    prefixIcon: const Icon(Icons.person),
                     labelText: 'last name'),
               ),
             ),
@@ -69,7 +69,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    prefixIcon: Icon(Icons.person),
+                    prefixIcon: const Icon(Icons.person),
                     labelText: 'first name'),
               ),
             ),
@@ -87,7 +87,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   labelText: 'Username',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  prefixIcon: Icon(Icons.person),
+                  prefixIcon: const Icon(Icons.person),
                 ),
               ),
             ),
@@ -105,7 +105,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   labelText: 'Email',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  prefixIcon: Icon(Icons.email),
+                  prefixIcon: const Icon(Icons.email),
                 ),
               ),
             ),
@@ -124,7 +124,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   labelText: 'Password',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  prefixIcon: Icon(Icons.password),
+                  prefixIcon: const Icon(Icons.password),
                 ),
               ),
             ),
@@ -135,7 +135,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   labelText: 'Role',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10)),
-                  prefixIcon: Icon(Icons.title),
+                  prefixIcon: const Icon(Icons.title),
                 ),
                 value: _role,
                 onChanged: (String? newValue) {
@@ -177,7 +177,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       // Use the data from the form fields to create a new account
-      UserDetails _userDetails = UserDetails(
+      UserDetails userDetails = UserDetails(
           email: _email,
           firstName: _firstName,
           lastName: _lastName,
@@ -195,7 +195,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
             .ref()
             .child("users")
             .child(credential.user!.uid)
-            .set({ _userDetails.toJson()});
+            .set({ userDetails.toJson()});
             
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {

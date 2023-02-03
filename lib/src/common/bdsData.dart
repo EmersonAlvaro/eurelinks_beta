@@ -2,7 +2,7 @@ import '../model/BDS.dart';
 
 
 BDS bds_members_function(){
-  BDS bds_members = BDS(
+  BDS bdsMembers = BDS(
       presidentName: "Lorenzo Pisanò",
       vicePresidentName: "BUzzinga",
       secretaryName: "Lucas Georget",
@@ -18,6 +18,6 @@ BDS bds_members_function(){
       email: "bde@eurecom.fr"
 
   );
-  return bds_members;
+  return bdsMembers;
 }
 

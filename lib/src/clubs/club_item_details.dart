@@ -23,7 +23,7 @@ class SampleClubItemDetailsView extends StatelessWidget {
                 children: [
                   Positioned.fill(
                     child: Ink.image(
-                      image: NetworkImage(
+                      image: const NetworkImage(
                           "https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg"),
                       fit: BoxFit.cover,
                       child: Container(),

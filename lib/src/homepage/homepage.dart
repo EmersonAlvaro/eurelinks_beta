@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import '../common/common.dart';
 
 import '../calendar/calendar.dart';
 import '../feed/feed.dart';
 import '../jobs/jobs.dart';
 import '../menu/menu.dart';
 import '../timeline/timeline.dart';
-import '../settings/settings_service.dart';
-import '../settings/settings_controller.dart';
 import '../user_profile/user_profile.dart';
 
 class HomePage extends StatefulWidget {

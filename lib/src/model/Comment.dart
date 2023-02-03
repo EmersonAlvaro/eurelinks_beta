@@ -1,4 +1,3 @@
-import 'User.dart';
 
 class Comment {
   String text;

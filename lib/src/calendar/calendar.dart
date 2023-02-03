@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'create-event-calendar.dart';
 
 class CalendarViewPage extends StatefulWidget {
@@ -24,10 +23,7 @@ class _CreateCalendarPageState extends State<CalendarViewPage> {
           );
         },
       ),
-      body: SfCalendar(
-        view: CalendarView.month,
-        monthViewSettings: MonthViewSettings(showAgenda: true),
-      ),
+      body: Text("Calendar"),
     );
   }
 }

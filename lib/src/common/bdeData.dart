@@ -2,7 +2,7 @@ import '../model/BDE.dart';
 
 
 BDE bde_members_function(){
-  BDE bde_members = BDE(
+  BDE bdeMembers = BDE(
       presidentName: "Robert Moller",
       vicePresidentName: "BUzzinga",
       secretaryName: "Clara Leonet",
@@ -18,6 +18,6 @@ BDE bde_members_function(){
       email: "bde@eurecom.fr"
 
   );
-  return bde_members;
+  return bdeMembers;
 }
 
